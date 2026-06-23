@@ -1,6 +1,6 @@
 # Social Network Simulator
 
-A command-line social network simulator implemented in **C++** using **Graphs, Breadth First Search (BFS)** and **AVL Trees**.
+A command-line social network simulator implemented in **C++** using **Graphs**, **Breadth First Search (BFS)** and **AVL Trees**.
 
 ---
 
@@ -22,24 +22,29 @@ The project demonstrates the implementation and application of fundamental data 
 ## Features
 
 ### User Management
+
 - Add new users
 - Prevent duplicate users
 
 ### Friendship Network
+
 - Add friendships between users
 - List friends alphabetically
 
 ### Friend Recommendations
+
 - Suggest friends based on the number of mutual friends
 - Rank suggestions by:
   1. Number of mutual friends
   2. Lexicographical order of usernames
 
 ### Degrees of Separation
+
 - Compute the shortest friendship path between two users
 - Implemented using **Breadth First Search (BFS)**
 
 ### Post Management
+
 - Add posts with timestamps
 - Retrieve the most recent posts efficiently
 
@@ -48,7 +53,7 @@ The project demonstrates the implementation and application of fundamental data 
 ## Data Structures Used
 
 | Component | Data Structure |
-|-----------|----------------|
+|----------|----------------|
 | Users | Vector of User objects |
 | Friendships | Graph (Adjacency List) |
 | Friend Suggestions | Mutual Friend Analysis |
@@ -74,6 +79,7 @@ social-network-simulator-cpp
 │   └── avl.hpp
 │
 ├── compile.sh
+├── LICENSE
 └── README.md
 ```
 
@@ -94,7 +100,7 @@ Used to compute:
 O(V + E)
 ```
 
-where
+where:
 
 - V = Number of users
 - E = Number of friendships
@@ -112,62 +118,81 @@ Used for:
 **Time Complexity**
 
 | Operation | Complexity |
-|-----------|-----------|
+|----------|-----------|
 | Insert Post | O(log n) |
 | Retrieve Recent Posts | O(log n) + O(k) |
 
 ---
 
-## Sample Commands
+## Compilation
 
-```text
-ADD_USER Alice
-ADD_USER Bob
-ADD_USER Charlie
-
-ADD_FRIEND Alice Bob
-ADD_FRIEND Bob Charlie
-
-ADD_POST Alice "Hello from Alice!"
-
-LIST_FRIENDS Alice
-
-SUGGEST_FRIENDS Alice 2
-
-DEGREES_OF_SEPARATION Alice Charlie
-
-OUTPUT_POSTS Alice -1
-
-EXIT
+```bash
+g++ -std=c++17 src/main.cpp src/graph.cpp src/user.cpp src/avl.cpp -I include -o socialnet
 ```
 
 ---
 
-## Sample Output
+## Running the Program
+
+Linux / Mac:
+
+```bash
+./socialnet
+```
+
+Windows:
+
+```powershell
+.\socialnet.exe
+```
+
+---
+
+## Sample Interaction
 
 ```text
 Welcome to the Social Network!
 
-Bob
+ADD_USER Abhishek
+ADD_USER Tanya
+ADD_USER Aditya
 
-Charlie
+ADD_FRIEND Abhishek Tanya
+ADD_FRIEND Tanya Aditya
 
+ADD_POST Abhishek "Building my first Social Network Simulator in C++!"
+
+LIST_FRIENDS Abhishek
+Tanya
+
+SUGGEST_FRIENDS Abhishek 2
+Aditya
+
+DEGREES_OF_SEPARATION Abhishek Aditya
 2
 
-Hello from Alice!
+OUTPUT_POSTS Abhishek -1
+Building my first Social Network Simulator in C++!
 
+EXIT
 Exiting Social Network...
 ```
 
 ---
 
+## Demo
+
+![Demo](demo.png)
+
+---
+
 ## Future Improvements
 
-- Persistent storage using files
-- Graph visualization
-- User profiles
+- Persistent file storage
+- Graph visualization using Graphviz
+- User profiles with additional metadata
 - Faster username lookup using hash maps
-- Improved recommendation algorithms
+- Enhanced recommendation algorithms
 
 ---
 
